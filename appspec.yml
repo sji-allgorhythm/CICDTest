@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+  - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^main/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^develop/'
+    destination: /var/www/html/main
+  - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^develop/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^main/'
+    destination: /var/www/html/develop
+
+
